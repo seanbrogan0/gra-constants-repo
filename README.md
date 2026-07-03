@@ -61,9 +61,12 @@ Until then the mobile app keeps its local copies.
 
 ## Notes
 
-- `constants/categories.ts` is **mobile-only** (imports the mobile theme
-  context) and is intentionally absent from the exports map — it cannot be
-  imported from this package. Follow-up: refactor it to data-only (keys,
-  labels, icon names) so both apps can share it.
+- `constants/categories.ts` is **data-only**: keys, labels, lucide icon
+  names, and semantic colour ROLES (`danger`, `accent`, `swatchSecondary`
+  etc.). It has no theme or framework imports. Each app consumes it through
+  a local adapter at `lib/constants/categories.ts` that maps roles to its
+  own colour system (mobile: theme context hex values; web: CSS custom
+  properties) and resolves icons its own way. Never put colour values or
+  framework code in this file.
 - Versioning: bump `version` in `package.json` on content changes; consumers
   pick up changes with `npm update gra-constants` (re-resolves the branch).

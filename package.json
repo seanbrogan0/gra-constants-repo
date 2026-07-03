@@ -8,6 +8,7 @@
     "constants"
   ],
   "exports": {
+    "./categories": "./constants/categories.ts",
     "./legalNames": "./constants/legalNames.ts",
     "./legalText": "./constants/legalText.ts",
     "./prices": "./constants/prices.ts",

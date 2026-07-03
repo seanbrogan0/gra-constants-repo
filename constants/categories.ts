@@ -1,8 +1,15 @@
-// /lib/constants/categories.ts
-// Unified wedding category definitions used across budget and planner tasks.
+// constants/categories.ts
+// Shared wedding category data — keys, labels, lucide icon names, and
+// semantic colour ROLES. DATA ONLY: no theme imports, no framework code.
+//
+// Each app maps colourRole to its own colour system through a local adapter
+// (both live at lib/constants/categories.ts in their repos):
+//   mobile — role → tokens.colours / HostColours (C.*PAL) hex values
+//   web    — role → CSS custom properties (var(--color-*), var(--pal-*))
+// Icon names are lucide identifiers (PascalCase) — mobile resolves them via
+// lucide-react-native, web maps them to its inline SVG markup.
 
-import { type HostColours } from "@/lib/theme/ThemeContext";
-import { colours } from "@/lib/theme/tokens";
+// ── Types ────────────────────────────────────────────────────
 
 export type WeddingCategory =
   | "venue"
@@ -15,39 +22,62 @@ export type WeddingCategory =
   | "stationery"
   | "accommodation"
   | "admin"
-  | "other";
+  | "other"
+  | "general";
 
-export type CategoryCfg = { label: string; icon: string; colour: string };
+// Semantic colour roles — fixed tokens (danger/success/info) or
+// palette-dependent slots (accent/swatchSecondary/textMid/textDark)
+export type CategoryColourRole =
+  | "danger"
+  | "success"
+  | "info"
+  | "accent"
+  | "swatchSecondary"
+  | "textMid"
+  | "textDark";
 
-export const WEDDING_CATEGORIES: WeddingCategory[] = [
-  "venue",
-  "catering",
-  "attire",
-  "photography",
-  "music",
-  "flowers",
-  "transport",
-  "stationery",
-  "accommodation",
-  "admin",
-  "other",
+export interface CategoryData {
+  key: WeddingCategory;
+  label: string;
+  // lucide icon name, PascalCase (e.g. "Building2")
+  icon: string;
+  // Omitted → the app's brand accent default
+  colourRole?: CategoryColourRole;
+}
+
+// ── Core categories (budget sections, planner tasks) ─────────
+
+export const WEDDING_CATEGORIES: readonly CategoryData[] = [
+  { key: "venue",         label: "Venue",         icon: "Building2",       colourRole: "danger" },
+  { key: "catering",      label: "Catering",      icon: "UtensilsCrossed", colourRole: "success" },
+  { key: "attire",        label: "Attire",        icon: "Shirt",           colourRole: "swatchSecondary" },
+  { key: "photography",   label: "Photography",   icon: "Camera",          colourRole: "accent" },
+  { key: "music",         label: "Music",         icon: "Music",           colourRole: "info" },
+  { key: "flowers",       label: "Flowers",       icon: "Flower2",         colourRole: "swatchSecondary" },
+  { key: "transport",     label: "Transport",     icon: "Car",             colourRole: "danger" },
+  { key: "stationery",    label: "Stationery",    icon: "Mail",            colourRole: "accent" },
+  { key: "accommodation", label: "Accommodation", icon: "BedDouble",       colourRole: "success" },
+  { key: "admin",         label: "Admin",         icon: "ClipboardList",   colourRole: "textMid" },
+  { key: "other",         label: "Other",         icon: "MoreHorizontal",  colourRole: "textDark" },
+] as const;
+
+// Catch-all — used by web filter pills; kept out of the core array so
+// mobile's category lists are unaffected. No colourRole → accent default.
+export const GENERAL_CATEGORY: CategoryData = {
+  key: "general",
+  label: "General",
+  icon: "Tag",
+};
+
+export const ALL_CATEGORIES: readonly CategoryData[] = [
+  ...WEDDING_CATEGORIES,
+  GENERAL_CATEGORY,
 ];
 
-// Factory — must receive C because some colours are palette-dependent (accentPAL, textMidPAL).
-export function getEventCategoryConfig(
-  C: HostColours,
-): Record<WeddingCategory, CategoryCfg> {
-  return {
-    venue:         { label: "Venue",         icon: "Building2",       colour: colours.danger },
-    catering:      { label: "Catering",      icon: "UtensilsCrossed", colour: colours.success },
-    attire:        { label: "Attire",        icon: "Shirt",           colour: C.swatchSecondaryPAL },
-    photography:   { label: "Photography",   icon: "Camera",          colour: C.accentPAL },
-    music:         { label: "Music",         icon: "Music",           colour: colours.info },
-    flowers:       { label: "Flowers",       icon: "Flower2",         colour: C.swatchSecondaryPAL},
-    transport:     { label: "Transport",     icon: "Car",             colour: colours.danger },
-    stationery:    { label: "Stationery",    icon: "Mail",            colour: C.accentPAL },
-    accommodation: { label: "Accommodation", icon: "BedDouble",       colour: colours.success },
-    admin:         { label: "Admin",         icon: "ClipboardList",   colour: C.textMidPAL },
-    other:         { label: "Other",         icon: "MoreHorizontal",  colour: C.textDarkPAL },
-  };
-}
+// ── Convenience map: key → data ──────────────────────────────
+
+export const CATEGORY_BY_KEY: Record<WeddingCategory, CategoryData> =
+  Object.fromEntries(ALL_CATEGORIES.map((c) => [c.key, c])) as Record<
+    WeddingCategory,
+    CategoryData
+  >;
