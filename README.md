@@ -40,9 +40,13 @@ token via the project's install command (`vercel.json` in gra-web):
 
 ```json
 {
-  "installCommand": "git config --global url.\"https://x-access-token:${GITHUB_TOKEN}@github.com/\".insteadOf \"https://github.com/\" && npm install"
+  "installCommand": "git config --global url.\"https://x-access-token:${GITHUB_TOKEN}@github.com/\".insteadOf \"https://github.com/\" && git config --global --add url.\"https://x-access-token:${GITHUB_TOKEN}@github.com/\".insteadOf \"ssh://git@github.com/\" && git config --global --add url.\"https://x-access-token:${GITHUB_TOKEN}@github.com/\".insteadOf \"git@github.com:\" && npm install"
 }
 ```
+
+All three GitHub URL forms are rewritten because npm records hosted-git
+dependencies in the lockfile as `git+ssh://git@github.com/...` regardless of
+the `git+https://` spec in package.json.
 
 `GITHUB_TOKEN` = fine-grained PAT scoped to `seanbrogan0/gra-constants-repo`,
 Contents: Read-only, stored as a sensitive environment variable in Vercel
