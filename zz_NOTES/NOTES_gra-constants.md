@@ -1,13 +1,29 @@
 # gra-constants — Shared Constants Package
 
-
 # HOW TO UPDATE THE WEBSITE AND APP WHNEN THIS CHANGES
-## Make your changes in here first.
-  - Updat prices or terms or whatever needs changing
-  - Commit the changes and merge into main branch
-  - Then in WEB AND APP repo run...
-  npm update gra-constants
- - Will ONLY update what is in main branch
+## Make your changes In the constants repo first.
+
+1. Make sure you're on main and up to date
+git checkout main
+git pull
+
+2. Edit your constants files (prices.ts, legalText.ts, etc.)
+
+3. Optional: bump version in package.json (cosmetic marker only). If you do, run npm install so its own lockfile stays in sync
+
+4. Commit and merge into main
+
+## In gra-web website repo AND mobile app repository
+
+6. Pull the new commit into the lockfile
+  - npm install
+  - npm update gra-constants
+
+7. Verify the lockfile picked it up
+  - Check node_modules/gra-constants in package-lock.json:
+  - the SHA should match step 5's output
+
+8. Commit and merge into main
 
 # Notes on build and deployment
 
