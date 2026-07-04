@@ -84,19 +84,3 @@ export const PLANNER_PLAN_FEATURES: Record<string, string[]> = {
   ],
 };
 
-// ─────────────────────────────────────────────
-// AI message boost packs
-// ─────────────────────────────────────────────
-
-export type AiBoostPack = {
-  key: string;
-  tokens: number;
-  approxMessages: number;
-  priceEur: number;
-};
-
-export const AI_BOOST_PACKS: AiBoostPack[] = [
-  { key: "boost_150",  tokens: 120_000,   approxMessages: 150,   priceEur: 4  },
-  { key: "boost_500",  tokens: 400_000,   approxMessages: 500,   priceEur: 10 },
-  { key: "boost_1500", tokens: 1_200_000, approxMessages: 1_500, priceEur: 25 },
-];
