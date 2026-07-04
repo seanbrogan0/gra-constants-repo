@@ -1,5 +1,4 @@
 // lib/constants/legalText.ts
-import { EVENT_GOLD_PRICE } from "./prices";
 import { EMAIL_LEGAL, EMAIL_PRIVACY, EMAIL_SUPPORT, LEGAL_ADDRESS, LEGAL_NAME, AI_PROVIDER } from "./legalNames";
  
 // ─────────────────────────────────────────────
@@ -86,7 +85,7 @@ export const TERMS_OF_SERVICE_SECTIONS: { heading: string; body: string }[] = [
   },
   {
     heading: "6. Subscription, Payments, and Refunds",
-    body: `Free Tier (Silver): Grá offers a free tier with wedding planning features including RSVP management, seating arrangements, gift registry, vendor search, and limited AI assistant access. No payment is required.\n\nGold Tier: Guest experience features are available as a per-event upgrade for ${EVENT_GOLD_PRICE}. This unlocks the full Wedding Day guest experience including Guest Buzz, photo uploads, gift registry access, schedule and directions, seating view on the day, and an increased AI assistant message allowance.\n\nAI Message Allowances: All tiers include a token-based AI message allowance. Usage is metered and the remaining allowance is visible in the app.\n\nAI Boost Packs: Additional AI message credit is available for purchase as boost packs. Boost packs are available to users on any tier, are non-refundable, and expire at the end of the associated event.\n\nPayments: Processed by Stripe. We do not store payment card data.\n\nRefunds: Offered only where the Service has not been accessed following purchase, or where a technical error prevented Service access. Requests must be submitted within 14 days to ${EMAIL_SUPPORT}.`,
+    body: `Free Tier (Silver): Grá offers a free tier with wedding planning features including RSVP management, seating arrangements, gift registry, vendor search, and limited AI assistant access. No payment is required.\n\nGold Tier: Guest experience features are available as a per-event upgrade. This unlocks the full Wedding Day guest experience including Guest Buzz, photo uploads, gift registry access, schedule and directions, seating view on the day, and an increased AI assistant message allowance.\n\nAI Message Allowances: All tiers include a token-based AI message allowance. Usage is metered and the remaining allowance is visible in the app.\n\nAI Boost Packs: Additional AI message credit is available for purchase as boost packs. Boost packs are available to users on any tier, are non-refundable, and expire at the end of the associated event.\n\nPayments: Processed by Stripe. We do not store payment card data.\n\nRefunds: Offered only where the Service has not been accessed following purchase, or where a technical error prevented Service access. Requests must be submitted within 14 days to ${EMAIL_SUPPORT}.`,
   },
   {
     heading: "7. Event Data and Deletion",
