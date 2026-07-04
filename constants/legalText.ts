@@ -13,7 +13,7 @@ export const LEGAL_EFFECTIVE_DATE = "Effective Date: 20/06/2026 | Version 1.0";
  
 export const PRIVACY_POLICY_SECTIONS: { heading: string; body: string }[] = [
   {
-    heading: `1. ${EVENT_GOLD_PRICE} IntroProduction`,
+    heading: `1. Introduction`,
     body: "Grá is a mobile wedding planning and guest experience application. We take the privacy of everyone who uses or is connected with Grá very seriously.\n\nThis Privacy Policy explains what personal data we collect, why we collect it, how we use it, and your rights in relation to that data. It applies to the Grá mobile application, our website, and any associated services.\n\nGrá is committed to full compliance with the General Data Protection Regulation (EU) 2016/679 (GDPR) and the Irish Data Protection Acts 1988–2018. Our supervisory authority is the Data Protection Commission (DPC) of Ireland.",
   },
   {
