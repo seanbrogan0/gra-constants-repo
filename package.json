@@ -1,0 +1,19 @@
+{
+  "name": "gra-constants",
+  "version": "0.1.0",
+  "description": "Shared Grá constants — pricing, legal text, and static data consumed by the web and mobile apps.",
+  "private": true,
+  "sideEffects": false,
+  "files": [
+    "constants"
+  ],
+  "exports": {
+    "./categories": "./constants/categories.ts",
+    "./legalNames": "./constants/legalNames.ts",
+    "./legalText": "./constants/legalText.ts",
+    "./prices": "./constants/prices.ts",
+    "./subscriptionFeatures": "./constants/subscriptionFeatures.ts",
+    "./irelandCounties": "./constants/irelandCounties.ts",
+    "./months": "./constants/months.ts"
+  }
+}
