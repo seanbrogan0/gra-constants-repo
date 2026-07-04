@@ -1,6 +1,6 @@
 // lib/constants/legalText.ts
-import { EVENT_GOLD_PRICE } from "./prices.ts";
-import{ EMAIL_LEGAL, EMAIL_PRIVACY, EMAIL_SUPPORT, LEGAL_ADDRESS, LEGAL_NAME, AI_PROVIDER } from "./legalNames.ts";
+import { EVENT_GOLD_PRICE } from "./prices";
+import { EMAIL_LEGAL, EMAIL_PRIVACY, EMAIL_SUPPORT, LEGAL_ADDRESS, LEGAL_NAME, AI_PROVIDER } from "./legalNames";
  
 // ─────────────────────────────────────────────
 // Metadata
