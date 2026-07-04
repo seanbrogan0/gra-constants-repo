@@ -3,5 +3,5 @@
 
 import { formatCurrency } from "@/lib/utils/currencyUtils";
 
-export const EVENT_GOLD_PRICE = formatCurrency(10);
+export const EVENT_GOLD_PRICE = formatCurrency(30);
 
