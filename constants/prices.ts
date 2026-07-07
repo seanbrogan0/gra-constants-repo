@@ -9,7 +9,7 @@
 
 //EVENT PRICING
 export const EVENT_GOLD_PRICE = (30);
-
+export const EVENT_DATA_RETENTION_PRICE = (5);
 //Planner Prices
 
 // AI message boost packs
