@@ -35,6 +35,8 @@ import { MAX_DOCUMENT_BYTES } from "gra-constants/documents";
 | `playlist` | Song types + sections, with labels |
 | `budget` | Payment status values + labels |
 | `uploads` | Image MIME allowlist + extension→MIME map (no GIF) |
+| `palettes` | Event palette definitions — 8 palettes, light + dark variants, names/descriptions |
+| `colours` | Static semantic colours (light + dark), calendar/booking colours, base + overlay values |
 
 **Adapter pattern**: every module is DATA ONLY — values, labels, and at most
 a tiny membership type-guard. No colours, icons, framework code, or
@@ -100,3 +102,8 @@ Fully wired up:
 
 - Versioning: bump `version` in `package.json` on content changes; consumers
   pick up changes with `npm update gra-constants` (re-resolves the branch).
+- **Palette change control**: both consuming repos run a byte-parity
+  accessibility test against their `testing/fixtures/palettes.fixture.json`.
+  Any hex edit in `constants/palettes.ts` must land in lockstep with fixture
+  updates (and a fresh WCAG contrast pass) in BOTH repos, or their test
+  suites hard-fail.
