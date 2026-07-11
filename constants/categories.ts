@@ -25,14 +25,17 @@ export type WeddingCategory =
   | "other"
   | "general";
 
-// Semantic colour roles — fixed tokens (danger/success/info) or
-// palette-dependent slots (accent/swatchSecondary/textMid/textDark)
+// Semantic colour roles — fixed tokens (danger/success/info/warning) or
+// palette-dependent slots (accent/textMid/textDark). The former
+// swatchSecondary role was removed after the WCAG audit: swatch colours are
+// palette-preview chips, not text-safe surfaces (down to 1.01:1 as pill
+// tints); attire/flowers now carry the warning role instead.
 export type CategoryColourRole =
   | "danger"
   | "success"
   | "info"
+  | "warning"
   | "accent"
-  | "swatchSecondary"
   | "textMid"
   | "textDark";
 
@@ -50,10 +53,10 @@ export interface CategoryData {
 export const WEDDING_CATEGORIES: readonly CategoryData[] = [
   { key: "venue",         label: "Venue",         icon: "Building2",       colourRole: "danger" },
   { key: "catering",      label: "Catering",      icon: "UtensilsCrossed", colourRole: "success" },
-  { key: "attire",        label: "Attire",        icon: "Shirt",           colourRole: "swatchSecondary" },
+  { key: "attire",        label: "Attire",        icon: "Shirt",           colourRole: "warning" },
   { key: "photography",   label: "Photography",   icon: "Camera",          colourRole: "accent" },
   { key: "music",         label: "Music",         icon: "Music",           colourRole: "info" },
-  { key: "flowers",       label: "Flowers",       icon: "Flower2",         colourRole: "swatchSecondary" },
+  { key: "flowers",       label: "Flowers",       icon: "Flower2",         colourRole: "warning" },
   { key: "transport",     label: "Transport",     icon: "Car",             colourRole: "danger" },
   { key: "stationery",    label: "Stationery",    icon: "Mail",            colourRole: "accent" },
   { key: "accommodation", label: "Accommodation", icon: "BedDouble",       colourRole: "success" },
