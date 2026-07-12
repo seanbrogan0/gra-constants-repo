@@ -1,6 +1,6 @@
 {
   "name": "gra-constants",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Shared Grá constants — pricing, legal text, and static data consumed by the web and mobile apps.",
   "private": true,
   "sideEffects": false,
