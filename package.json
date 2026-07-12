@@ -1,6 +1,6 @@
 {
   "name": "gra-constants",
-  "version": "0.1.7",
+  "version": "0.3.0",
   "description": "Shared Grá constants — pricing, legal text, and static data consumed by the web and mobile apps.",
   "private": true,
   "sideEffects": false,
@@ -14,6 +14,15 @@
     "./prices": "./constants/prices.ts",
     "./subscriptionFeatures": "./constants/subscriptionFeatures.ts",
     "./irelandCounties": "./constants/irelandCounties.ts",
-    "./months": "./constants/months.ts"
+    "./months": "./constants/months.ts",
+    "./bookingStatuses": "./constants/bookingStatuses.ts",
+    "./checklistDefaults": "./constants/checklistDefaults.ts",
+    "./rsvp": "./constants/rsvp.ts",
+    "./documents": "./constants/documents.ts",
+    "./playlist": "./constants/playlist.ts",
+    "./budget": "./constants/budget.ts",
+    "./uploads": "./constants/uploads.ts",
+    "./palettes": "./constants/palettes.ts",
+    "./colours": "./constants/colours.ts"
   }
 }
