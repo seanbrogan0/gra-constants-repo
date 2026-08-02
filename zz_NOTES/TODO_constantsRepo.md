@@ -35,15 +35,10 @@ These block downstream work in other lists. Nothing here is a build task.
       Blocks: "Vendor/planner plan pricing", "Stripe price objects"
       Added: 12/07/2026
 
-- [ ] **AI model selection**: choose one of Anthropic, Mistral, or Gemini as the production provider for Cara.
-      Blocked by: mobile "Test All Models x3"
-      Blocks: mobile "Remove Unused Models" / "Prepare Chosen Model", web "Add AI Chatbot", `AI_PROVIDER` in legal names
-      Affects: gra-constants, gra-mobile-app, gra-web, Supabase
-
 
 # v1.0: gra-constants
 
-- [ ] **legalNames TBC values**: `LEGAL_NAME` (currently "Blackbird - TBC"), `LEGAL_ADDRESS`, and `AI_PROVIDER` render verbatim on `/privacy` and `/terms`. Set the real values.
+- [ ] **legalNames TBC values**: `LEGAL_NAME` (currently "TBC"), `LEGAL_ADDRESS`, and `AI_PROVIDER` render verbatim on `/privacy` and `/terms`. Set the real values.
       Once resolved, gra-web must also: remove the `robots` noindex block from both pages, and add both pages to `app/sitemap.ts`.
       Affects: gra-constants, gra-web
       Blocked by (AI_PROVIDER only): "AI model selection"
@@ -70,11 +65,11 @@ These block downstream work in other lists. Nothing here is a build task.
       Affects: Supabase, gra-web
       Found: 11/07/2026 during bug-sweep RLS review
 
-- [ ] **Unfeature on subscription downgrade**: when a vendor/planner subscription expires or downgrades, set `is_featured = false` on their portfolio items so lapsed accounts drop out of the featured carousel (the carousel shows all `is_featured = true` items regardless of tier, so nothing else removes them). Webhook/backend change.
+- [done?-To-Be-Confirmed] **Unfeature on subscription downgrade**: when a vendor/planner subscription expires or downgrades, set `is_featured = false` on their portfolio items so lapsed accounts drop out of the featured carousel (the carousel shows all `is_featured = true` items regardless of tier, so nothing else removes them). Webhook/backend change.
       Affects: Supabase, Stripe
       Added: 13/07/2026
 
-- [ ] **Portfolio notes and galleries now world-readable, confirm intent**: the 13/07/2026 migration exposes `vendor_portfolio.notes` and `planner_portfolio.notes` through the public detail views and adds anon SELECT policies on `vendor_gallery` and `planner_gallery` so public profiles render fully for logged-out visitors. Notes are vendor-authored marketing copy so this is assumed intended: confirm, or gate them back to authenticated users (migration to revert the anon policies if not).
+- [x] **Portfolio notes and galleries now world-readable, confirm intent**: the 13/07/2026 migration exposes `vendor_portfolio.notes` and `planner_portfolio.notes` through the public detail views and adds anon SELECT policies on `vendor_gallery` and `planner_gallery` so public profiles render fully for logged-out visitors. Notes are vendor-authored marketing copy so this is assumed intended: confirm, or gate them back to authenticated users (migration to revert the anon policies if not).
       Affects: Supabase, gra-web
       Added: 13/07/2026
 
